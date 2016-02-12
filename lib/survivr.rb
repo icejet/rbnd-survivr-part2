@@ -20,9 +20,17 @@ require_relative "jury"
 
 #This is where you will write your code for the three phases
 def phase_one
+  eliminated = []
+  8.times do
+    tribe = @borneo.immunity_challenge
+    contestant = tribe.tribal_council
+    tribe.eliminate(contestant)
+    eliminated << contestant
+  end
 end
 
 def phase_two
+
 end
 
 def phase_three
