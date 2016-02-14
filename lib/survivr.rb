@@ -27,6 +27,7 @@ def phase_one
     contestant = tribe.tribal_council
     tribe.eliminate(contestant)
     eliminated << contestant
+    puts "#{contestant} from #{tribe.name.red} was eliminated!"
   end
 end
 
@@ -37,6 +38,7 @@ def phase_two
     contestant = @merge_tribe.tribal_council(immune)
     @merge_tribe.eliminate(contestant)
     eliminated << contestant
+    puts "#{contestant} was eliminated!"
   end
 end
 
@@ -46,6 +48,7 @@ def phase_three
     contestant = @merge_tribe.tribal_council(immune)
     @merge_tribe.eliminate(contestant)
     @jury.add_member(contestant)
+    puts "#{contestant} was eliminated and now joins the jury."
   end
 end
 
