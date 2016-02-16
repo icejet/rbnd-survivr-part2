@@ -24,32 +24,29 @@ def phase_one
   eliminated = []
   8.times do
     tribe = @borneo.immunity_challenge
-    contestant = tribe.tribal_council
-    tribe.eliminate(contestant)
-    eliminated << contestant
-    puts "#{contestant} from #{tribe.name.red} was eliminated!"
+    eliminated << eliminate_contestant(tribe)
   end
 end
 
 def phase_two
   eliminated = []
   3.times do
-    immune = @borneo.individual_immunity_challenge
-    contestant = @merge_tribe.tribal_council(immune)
-    @merge_tribe.eliminate(contestant)
-    eliminated << contestant
-    puts "#{contestant} was eliminated!"
+    eliminated << eliminate_contestant(@merge_tribe, immune: true)
   end
 end
 
 def phase_three
   7.times do
-    immune = @borneo.individual_immunity_challenge
-    contestant = @merge_tribe.tribal_council(immune)
-    @merge_tribe.eliminate(contestant)
+    contestant = eliminate_contestant(@merge_tribe, immune: true)
     @jury.add_member(contestant)
-    puts "#{contestant} was eliminated and now joins the jury."
   end
+end
+
+def eliminate_contestant(tribe, options = {})
+  immune = @borneo.individual_immunity_challenge if options[:immune]
+  contestant = options[:immune] ? tribe.tribal_council(immune) : tribe.tribal_council
+  puts "#{contestant} from #{tribe.name.red} was eliminated!"
+  tribe.eliminate(contestant)
 end
 
 
