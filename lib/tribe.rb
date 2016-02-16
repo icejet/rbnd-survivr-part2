@@ -2,9 +2,9 @@ class Tribe
   attr_reader :name, :members
 
   def initialize(options = {})
-    @name = options[:name]
+    @name = options[:name].red
     @members = options[:members]
-    puts "The #{@name.red} tribe formed."
+    puts "The #{@name} tribe formed."
   end
 
   def to_s

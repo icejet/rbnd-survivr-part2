@@ -45,7 +45,7 @@ end
 def eliminate_contestant(tribe, options = {})
   immune = @borneo.individual_immunity_challenge if options[:immune]
   contestant = options[:immune] ? tribe.tribal_council(immune) : tribe.tribal_council
-  puts "#{contestant} from #{tribe.name.red} was eliminated!"
+  puts "#{contestant} from #{tribe.name} was eliminated!"
   tribe.eliminate(contestant)
 end
 
