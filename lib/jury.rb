@@ -12,10 +12,10 @@ class Jury
   def cast_votes(finalists)
     votes = {}
     finalists.each {|finalist| votes[finalist.name] = 0 }
-    @members.each do
+    @members.each do |member|
       picked = finalists.sample.name
       votes[picked] += 1
-      puts "#{picked}: 1"
+      puts "#{member} votes for #{picked}"
     end
     votes
   end
